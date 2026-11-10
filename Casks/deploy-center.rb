@@ -1,6 +1,6 @@
 cask "deploy-center" do
-  version "0.7.0"
-  sha256 "2df6056cc354010072d1df9430fb34f62be3cdc32095a0fd683b25acb2386070"
+  version "0.8.0"
+  sha256 "ec5919366759021bb5d803a0652c7bb4118711cd423bc49803b4b76cae1feb91"
 
   url "https://github.com/Pschmetzer/deploy-center/releases/download/v#{version}/DeployCenter-#{version}-universal.zip"
   name "Deploy Center"
