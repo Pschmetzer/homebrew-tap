@@ -1,6 +1,6 @@
 cask "deploy-center" do
-  version "0.8.0"
-  sha256 "ec5919366759021bb5d803a0652c7bb4118711cd423bc49803b4b76cae1feb91"
+  version "0.9.1"
+  sha256 "4d8f150d668e8f4e14a64506386f4a56055409cb09ed4e968a2f0390dae23e3a"
 
   url "https://github.com/Pschmetzer/deploy-center/releases/download/v#{version}/DeployCenter-#{version}-universal.zip"
   name "Deploy Center"
@@ -14,6 +14,10 @@ cask "deploy-center" do
 
   depends_on formula: "jq"
   depends_on macos: :sequoia
+
+  # The app updates itself (Sparkle, signed appcast on deploycenter.app), so "brew upgrade"
+  # leaves it alone unless --greedy is given; brew still sees the new version via livecheck.
+  auto_updates true
 
   app "Deploy Center.app"
 
