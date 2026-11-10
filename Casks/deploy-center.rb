@@ -7,7 +7,7 @@ cask "deploy-center" do
   desc "Deploy Vercel and Render projects by hand and keep build costs down"
   homepage "https://github.com/Pschmetzer/deploy-center"
 
-  depends_on macos: ">= :sequoia"
+  depends_on macos: :sequoia
 
   app "Deploy Center.app"
 end
