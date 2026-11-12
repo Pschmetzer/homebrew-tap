@@ -1,8 +1,8 @@
 class Deploys < Formula
   desc "Turn off auto-deploy on Vercel and Render, then deploy what changed by hand"
   homepage "https://deploycenter.app/"
-  url "https://github.com/Pschmetzer/deploy-center/releases/download/v0.9.1/deploys-cli-0.9.1.tar.gz"
-  sha256 "de99fac35dcb53831a8d1364b88e845bba52b2b4df1339ec5f84a6e4fde4b1ff"
+  url "https://github.com/Pschmetzer/deploy-center/releases/download/v0.10.0/deploys-cli-0.10.0.tar.gz"
+  sha256 "6dcc81de06db28770ea4b63c87cbc760449959a75edb61d27447505dbda8743c"
   license "MIT"
 
   livecheck do
@@ -17,6 +17,9 @@ class Deploys < Formula
   def install
     libexec.install "deploys", "VERSION"
     libexec.install "providers" if File.directory?("providers")
+    # lib/: team file, two-person rule, observers, GitLab, simulate and ledger. deploys reads
+    # it next to itself (libexec), like providers/.
+    libexec.install "lib" if File.directory?("lib")
     (bin/"deploys").write_env_script libexec/"deploys", {}
     doc.install "README-CLI.md"
   end
