@@ -1,8 +1,8 @@
 class Deploys < Formula
-  desc "Turn off auto-deploy on Vercel and Render, then deploy what changed by hand"
+  desc "Turn off Git auto-deploy on Vercel, Render and more, then deploy by hand"
   homepage "https://deploycenter.app/"
-  url "https://github.com/Pschmetzer/deploy-center/releases/download/v0.11.0/deploys-cli-0.11.0.tar.gz"
-  sha256 "15c0afab36390441257027bddf5e2d5a73c24862837353b9e456e3a2a6ec7736"
+  url "https://github.com/Pschmetzer/deploy-center/releases/download/v0.12.0/deploys-cli-0.12.0.tar.gz"
+  sha256 "2d316ecbe800e264a825e06b5fd11c9385374fa4b355dc9ca573bf8a7db085c1"
   license "MIT"
 
   livecheck do
@@ -22,6 +22,7 @@ class Deploys < Formula
     libexec.install "lib" if File.directory?("lib")
     (bin/"deploys").write_env_script libexec/"deploys", {}
     doc.install "README-CLI.md"
+    man1.install "man/deploys.1" if File.exist?("man/deploys.1")
   end
 
   def caveats
@@ -30,6 +31,7 @@ class Deploys < Formula
         brew trust pschmetzer/tap
       For Vercel install the Vercel CLI (npm install -g vercel); for what is waiting
       to deploy, the GitHub CLI (brew install gh). Then run: deploys doctor
+      Manual page: man deploys.
       Tab completion: eval "$(deploys completion zsh)" in ~/.zshrc (or bash in ~/.bashrc).
     EOS
   end
