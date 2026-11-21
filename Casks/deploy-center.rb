@@ -1,10 +1,10 @@
 cask "deploy-center" do
-  version "0.11.0"
-  sha256 "4dd04e693dd878aade21967d9bd93296399c96a5365d765c368ff6060e4e53c8"
+  version "0.12.0"
+  sha256 "8d8e2d0cfc260836868532de18a4eb5159ff771c2aa1bb7b341f144a66a12dde"
 
   url "https://github.com/Pschmetzer/deploy-center/releases/download/v#{version}/DeployCenter-#{version}-universal.zip"
   name "Deploy Center"
-  desc "Deploy Vercel and Render projects by hand and keep build costs down"
+  desc "Turn off Git auto-deploy on Vercel, Render and more, and deploy by hand"
   homepage "https://deploycenter.app/"
 
   livecheck do
@@ -21,7 +21,13 @@ cask "deploy-center" do
 
   app "Deploy Center.app"
 
-  uninstall quit: "app.deploycenter.mac"
+  # The launchd jobs of guard, autofix and the daily deploy would call a deleted program otherwise.
+  uninstall launchctl: [
+              "app.deploycenter.guard",
+              "app.deploycenter.autofix",
+              "app.deploycenter.daily",
+            ],
+            quit:      "app.deploycenter.mac"
 
   # ~/.config/deploys stays: it holds which repo each disconnected Vercel project came from.
   zap trash: [
