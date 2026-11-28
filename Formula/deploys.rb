@@ -1,8 +1,8 @@
 class Deploys < Formula
   desc "Turn off Git auto-deploy on Vercel, Render and more, then deploy by hand"
   homepage "https://deploycenter.app/"
-  url "https://github.com/Pschmetzer/deploy-center/releases/download/v0.15.0/deploys-cli-0.15.0.tar.gz"
-  sha256 "89b81d52021ea09a29ac878039a8847b4fff6f36811e6d37fdd4177afe3ebd02"
+  url "https://github.com/Pschmetzer/deploy-center/releases/download/v0.16.0/deploys-cli-0.16.0.tar.gz"
+  sha256 "34bdca052d7d0b6dec7b85894cf6023b847c974f2af3ff36d611eb0c79deea39"
   license "MIT"
 
   livecheck do
